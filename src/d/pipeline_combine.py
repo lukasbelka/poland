@@ -1,4 +1,4 @@
-# This script will combine all interim CSVs into a single DataFrame and save to processed.
+# This script combines all interim CSVs into a single DataFrame and saves them to interim_combined.
 
 
 import os

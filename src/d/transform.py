@@ -37,7 +37,7 @@ def apply_all_transformations(df: pd.DataFrame) -> pd.DataFrame:
 def transform_gwp(df: pd.DataFrame) -> pd.DataFrame:
     df = apply_all_transformations(df)
     # GWP-specific steps
-    df['value'] = df['B'] + df['C'] + df['D'] + df['E']
+    df["ytd"] = df['B'] + df['C'] + df['D'] + df['E']
     df = df.drop(columns=['B', 'C', 'D', 'E'])
     df["kpi"] = "gross written premium"
     return df
@@ -45,7 +45,7 @@ def transform_gwp(df: pd.DataFrame) -> pd.DataFrame:
 def transform_claims(df: pd.DataFrame) -> pd.DataFrame:
     df = apply_all_transformations(df)
     # Claims-specific steps
-    df['value'] = df['F'] + df['G'] + df['H'] + df['I']
+    df["ytd"] = df['F'] + df['G'] + df['H'] + df['I']
     df = df.drop(columns=['F', 'G', 'H', 'I'])
     df["kpi"] = "gross claims paid"
     return df

@@ -63,10 +63,9 @@ def process_all_files(raw_dir='data/D/raw', interim_dir='data/D/interim', sheet_
                     return None
             df_gwp["reporting_date"] = df_gwp.apply(get_last_day_of_quarter_de, axis=1)
             df_claims["reporting_date"] = df_claims.apply(get_last_day_of_quarter_de, axis=1)
-
-            # Add iso_ytd column to the DataFrames
-            df_gwp["iso_ytd"] = "YTD"
-            df_claims["iso_ytd"] = "YTD"
+            # Convert reporting_date to datetime type
+            df_gwp["reporting_date"] = pd.to_datetime(df_gwp["reporting_date"], format="%d.%m.%Y")
+            df_claims["reporting_date"] = pd.to_datetime(df_claims["reporting_date"], format="%d.%m.%Y")
 
             output_gwp = os.path.join(interim_dir, f'{base_name}_gwp.csv')
             output_claims = os.path.join(interim_dir, f'{base_name}_claims.csv')
